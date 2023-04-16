@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crestwood Academy</title>
+    <h1>Crestwood Academy Verification Page</h1>
+    <style>
+      html {
+        max-width: 800px;
+      }
+      body {
+        background-color: white;
+        margin: 0 4rem;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.15rem;
+      }
+      section {
+        border-bottom: lightblue solid 2px;
+      }
+      h1 {
+        font-size: 3em;
+      }
+      ul,
+      li {
+        list-style: square;
+      }
+      em {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <body>
+    <section>
+      <h2>Instructions</h2>
+      <p>
+Below is a password which a student will require to start this test. Copy and paste/send this password to whoever needs it.
+      </p>
+   <p>Your code is: <span id="ip"></span></p>
+    <script>
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', 'https://api.ipify.org', true);
+      xhr.onload = function () {
+        document.getElementById('ip').textContent = this.responseText;
+      };
+      xhr.send();
+    </script>
+    </section>
+  </body>
+</html>

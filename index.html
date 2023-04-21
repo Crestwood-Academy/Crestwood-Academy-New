@@ -28,24 +28,47 @@
       em {
         color: red;
       }
+      .ip-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+      .ip-textbox {
+        flex-grow: 1;
+        margin-right: 1rem;
+      }
+      .copy-btn {
+        background-color: lightgray;
+        border: none;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+      }
     </style>
   </head>
   <body>
-    <body>
     <section>
       <h2>Instructions</h2>
-      <p>
-Hello! Below is a randomly generated code. Use this to start the test.
-      </p>
-   <p>Your code is: <span id="ip"></span></p>
-    <script>
-      var xhr = new XMLHttpRequest();
-      xhr.open('GET', 'https://api.ipify.org', true);
-      xhr.onload = function () {
-        document.getElementById('ip').textContent = this.responseText;
-      };
-      xhr.send();
-    </script>
+      <p>Hello! Below is a randomly generated code. Use this to start the test.</p>
+      <div class="ip-container">
+        <input type="text" id="ip" class="ip-textbox" readonly />
+        <button id="copy-btn" class="copy-btn">Copy</button>
+      </div>
+      <script>
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'https://api.ipify.org', true);
+        xhr.onload = function () {
+          var ip = this.responseText;
+          document.getElementById('ip').value = ip;
+
+          var copyBtn = document.getElementById('copy-btn');
+          copyBtn.addEventListener('click', function () {
+            var textbox = document.getElementById('ip');
+            textbox.select();
+            document.execCommand('copy');
+          });
+        };
+        xhr.send();
+      </script>
     </section>
   </body>
 </html>

@@ -1,74 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Crestwood Academy</title>
-    <h1>Crestwood Academy Verification Page</h1>
+    <title>YouTube Video Example</title>
     <style>
-      html {
-        max-width: 800px;
-      }
-      body {
-        background-color: white;
-        margin: 0 4rem;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 1.15rem;
-      }
-      section {
-        border-bottom: lightblue solid 2px;
-      }
-      h1 {
-        font-size: 3em;
-      }
-      ul,
-      li {
-        list-style: square;
-      }
-      em {
-        color: red;
-      }
-      .ip-container {
+      #video-container {
         display: flex;
+        justify-content: center;
         align-items: center;
-        margin-bottom: 1rem;
+        height: 100vh;
       }
-      .ip-textbox {
-        flex-grow: 1;
-        margin-right: 1rem;
-      }
-      .copy-btn {
-        background-color: lightgray;
-        border: none;
-        padding: 0.5rem 1rem;
-        cursor: pointer;
+      iframe {
+        width: 560px;
+        height: 315px;
       }
     </style>
   </head>
   <body>
-    <section>
-      <h2>Instructions</h2>
-      <p>Hello. Below is a special code which a student will require to start their exam.</p>
-      <div class="ip-container">
-        <input type="text" id="ip" class="ip-textbox" readonly />
-        <button id="copy-btn" class="copy-btn">Copy</button>
-      </div>
-      <script>
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'https://api.ipify.org', true);
-        xhr.onload = function () {
-          var ip = this.responseText;
-          document.getElementById('ip').value = ip;
-
-          var copyBtn = document.getElementById('copy-btn');
-          copyBtn.addEventListener('click', function () {
-            var textbox = document.getElementById('ip');
-            textbox.select();
-            document.execCommand('copy');
-          });
-        };
-        xhr.send();
-      </script>
-    </section>
+    <div id="video-container">
+      <iframe src="https://www.youtube.com/embed/dPtXaAZHuho?controls=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
   </body>
 </html>

